@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>抽卡｜思途・五階</title>
+  <style>
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      background: linear-gradient(to bottom right, #e9f5f2, #fdfcfb);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      color: #2f4f4f;
+    }
+    .card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      margin-top: 1.5rem;
+      display: none;
+    }
+    .card.animate {
+      animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    button {
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 9999px;
+      background: linear-gradient(to right, #60a5fa, #3b82f6);
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>抽一張卡 🎴</h1>
+  <button onclick="drawCard()">抽卡</button>
+
+  <div class="card" id="cardBox">
+    <p><strong id="theme"></strong></p>
+    <p id="prompt1"></p>
+    <p id="prompt2"></p>
+    <p id="prompt3"></p>
+  </div>
+
+  <script>
+    const cards = [
+      {
+        theme: "現在的自己",
+        prompts: [
+          "這段時間，你最常思考的是什麼？",
+          "此刻的你，有什麼想對自己說的話？",
+          "今天，你願意從什麼感受開始？"
+        ]
+      },
+      {
+        theme: "情緒的低語",
+        prompts: [
+          "剛才那句話，是事實、感受、還是想法？",
+          "你有多久沒好好地聽自己的情緒了？",
+          "這份情緒，想傳遞什麼訊息？"
+        ]
+      },
+      {
+        theme: "與疲憊共處",
+        prompts: [
+          "如果不必強顏歡笑，你想坦白什麼？",
+          "這份疲憊，從何而來？",
+          "你想怎麼陪伴自己的疲憊？"
+        ]
+      }
+    ];
+
+    function drawCard() {
+      const card = cards[Math.floor(Math.random() * cards.length)];
+      document.getElementById("theme").textContent = `主題：${card.theme}`;
+      document.getElementById("prompt1").textContent = `「${card.prompts[0]}」`;
+      document.getElementById("prompt2").textContent = `「${card.prompts[1]}」`;
+      document.getElementById("prompt3").textContent = `「${card.prompts[2]}」`;
+      const box = document.getElementById("cardBox");
+      box.style.display = "block";
+      box.classList.remove("animate");
+      void box.offsetWidth;
+      box.classList.add("animate");
+    }
+  </script>
+</body>
+</html>
