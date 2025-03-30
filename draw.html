@@ -6,7 +6,7 @@
   <style>
     body {
       font-family: "Noto Sans TC", sans-serif;
-      background: linear-gradient(to bottom right, #eef7f5, #ffffff);
+      background: linear-gradient(to bottom right, #e9f5f2, #fdfcfb);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -36,12 +36,6 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    img {
-      max-width: 100%;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    }
     button {
       padding: 0.6rem 1.5rem;
       font-size: 1rem;
@@ -59,7 +53,6 @@
   <button onclick="drawCard()">抽卡</button>
 
   <div class="card" id="cardBox">
-    <img id="cardImage" src="" alt="卡片插圖">
     <p><strong id="theme"></strong></p>
     <p id="prompt1"></p>
     <p id="prompt2"></p>
@@ -67,37 +60,45 @@
   </div>
 
   <script>
-    let cards = [];
-
-    async function loadCards() {
-      try {
-        const res = await fetch('sithu_cards.json');
-        cards = await res.json();
-      } catch (err) {
-        console.error("讀取卡片資料失敗", err);
+    const cards = [
+      {
+        theme: "現在的自己",
+        prompts: [
+          "這段時間，你最常思考的是什麼？",
+          "此刻的你，有什麼想對自己說的話？",
+          "今天，你願意從什麼感受開始？"
+        ]
+      },
+      {
+        theme: "情緒的低語",
+        prompts: [
+          "剛才那句話，是事實、感受、還是想法？",
+          "你有多久沒好好地聽自己的情緒了？",
+          "這份情緒，想傳遞什麼訊息？"
+        ]
+      },
+      {
+        theme: "與疲憊共處",
+        prompts: [
+          "如果不必強顏歡笑，你想坦白什麼？",
+          "這份疲憊，從何而來？",
+          "你想怎麼陪伴自己的疲憊？"
+        ]
       }
-    }
+    ];
 
     function drawCard() {
-      if (!cards.length) {
-        alert("卡片尚未載入，請稍後再試！");
-        return;
-      }
       const card = cards[Math.floor(Math.random() * cards.length)];
       document.getElementById("theme").textContent = `主題：${card.theme}`;
-      document.getElementById("prompt1").textContent = `「${card.prompt1}」`;
-      document.getElementById("prompt2").textContent = `「${card.prompt2}」`;
-      document.getElementById("prompt3").textContent = `「${card.prompt3}」`;
-      document.getElementById("cardImage").src = "assets/image01.webp";
-
+      document.getElementById("prompt1").textContent = `「${card.prompts[0]}」`;
+      document.getElementById("prompt2").textContent = `「${card.prompts[1]}」`;
+      document.getElementById("prompt3").textContent = `「${card.prompts[2]}」`;
       const box = document.getElementById("cardBox");
       box.style.display = "block";
       box.classList.remove("animate");
       void box.offsetWidth;
       box.classList.add("animate");
     }
-
-    loadCards();
   </script>
 </body>
 </html>
