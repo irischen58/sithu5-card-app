@@ -1,0 +1,1 @@
+console.log('抽卡功能 JavaScript 啟動');
