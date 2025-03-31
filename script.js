@@ -1,1 +1,1 @@
-console.log('抽卡功能 JavaScript 啟動');
+console.log('抽卡邏輯尚在整合中');
