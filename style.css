@@ -1,1 +1,60 @@
-body { font-family: sans-serif; background-color: #fdfdfd; }
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  background: linear-gradient(to bottom right, #f8f9fa, #e6f0ee);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem 1rem;
+}
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+p.subtitle {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+button {
+  background: linear-gradient(to right, #34d399, #14b8a6);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 22rem;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  display: none;
+  transition: all 0.4s ease;
+}
+.card img {
+  max-width: 100%;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+.theme {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.prompt {
+  font-size: 1rem;
+  line-height: 1.6;
+}
